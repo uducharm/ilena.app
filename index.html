@@ -153,6 +153,53 @@
 
     .btn-secondary:hover { border-color: var(--accent); text-decoration: none; }
 
+    /* PROBLEM */
+    .problem-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--surface);
+    }
+
+    .problem-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 3rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .problem-headline em {
+      font-style: normal;
+      color: var(--accent-light);
+    }
+
+    .pain-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pain {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .pain strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
     /* SECTION COMMON */
     section { padding: 5rem 2rem; }
 
@@ -251,6 +298,73 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
+
+    /* CREDIBILITY */
+    .cred-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cred-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .cred-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .cred-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+    }
+
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+
+    .cred-card .cred-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .cred-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .cred-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .beta-cta {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.12);
+      border: 1px solid rgba(124, 92, 252, 0.5);
+      color: var(--accent-light);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .beta-cta:hover { background: rgba(124, 92, 252, 0.22); text-decoration: none; }
 
     /* PRICING */
     .pricing-grid {
@@ -434,6 +548,31 @@
     </div>
   </div>
 
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <h2 class="problem-headline">
+      Songwriting is emotional.<br><em>Editing shouldn't be exhausting.</em>
+    </h2>
+    <div class="pain-points">
+      <div class="pain">
+        <strong>Stuck on a rhyme?</strong>
+        You've been staring at the last line for 20 minutes and nothing feels right.
+      </div>
+      <div class="pain">
+        <strong>Unsure about rhythm?</strong>
+        It sounds off when you sing it, but you can't quite pinpoint why.
+      </div>
+      <div class="pain">
+        <strong>Rewriting the same line?</strong>
+        Version 18. Still not there. The original feeling is slipping away.
+      </div>
+      <div class="pain">
+        <strong>Juggling 4 different tools?</strong>
+        Rhymezone, a thesaurus, a notes app, and a voice memo — just to finish one verse.
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section id="features">
     <div class="section-inner">
@@ -450,9 +589,9 @@
           <p>Write and organise all your songs in one place. Your lyrics are stored securely and accessible anywhere.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔤</div>
-          <h3>Spell & Grammar Check</h3>
-          <p>Catch typos and grammatical errors without losing your intended style or dialect.</p>
+          <div class="feature-icon">📖</div>
+          <h3>Definition Dictionary</h3>
+          <p>Look up any word without leaving your song. Understand nuance and pick the word that means exactly what you intend.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎵</div>
@@ -495,7 +634,7 @@
         <div class="step">
           <div class="step-num">02</div>
           <h3>Get instant feedback</h3>
-          <p>Lexia analyses your lyrics in real time, flagging rhythm issues, weak rhymes, and grammar errors as you go.</p>
+          <p>Lexia analyses your lyrics in real time, flagging rhythm issues and suggesting rhymes and definitions as you go.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
@@ -508,6 +647,35 @@
           <p>Your songs are safely stored in the cloud. Pick up where you left off from any device, any time.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CREDIBILITY -->
+  <section class="cred-section">
+    <div class="section-inner">
+      <div class="section-label">Why trust Lexia</div>
+      <h2 class="cred-headline">Not another app built by people who don't write songs.</h2>
+      <p class="cred-sub">Lexia is built from the inside — by someone who has lived both sides of the craft.</p>
+      <div class="cred-cards">
+        <div class="cred-card">
+          <div class="cred-icon">🛠️</div>
+          <h3>30+ years of software engineering</h3>
+          <p>Enterprise-grade architecture, security, and reliability — not a side project held together with duct tape.</p>
+        </div>
+        <div class="cred-card">
+          <div class="cred-icon">🎸</div>
+          <h3>Built by a songwriter, for songwriters</h3>
+          <p>Every feature comes from a real frustration felt in a real writing session. The tools exist because the founder needed them.</p>
+        </div>
+        <div class="cred-card">
+          <div class="cred-icon">🎤</div>
+          <h3>Shaped by working lyricists</h3>
+          <p>A focus group of active songwriters has been involved from day one — testing, critiquing, and steering what gets built.</p>
+        </div>
+      </div>
+      <a href="#" class="beta-cta">Closed beta opening soon — request early access</a>
     </div>
   </section>
 
@@ -527,7 +695,8 @@
           <div class="plan-desc">Perfect for trying Lexia out.</div>
           <ul class="plan-features">
             <li>Up to 2 songs</li>
-            <li>Spell &amp; grammar check</li>
+            <li>Rhyme dictionary</li>
+            <li>Definition dictionary</li>
             <li>Rhyme suggestions</li>
             <li>Syllable counter</li>
           </ul>
@@ -574,19 +743,19 @@
   <section class="tech-section">
     <div class="section-inner">
       <div class="section-label">Built for reliability</div>
-      <h2 class="section-title">Enterprise-grade, songwriter-friendly</h2>
+      <h2 class="section-title">Your songs are safe. Full stop.</h2>
       <p class="section-sub">
-        Lexia is built on a secure, cloud-native stack so your lyrics are always safe, private, and available.
+        You focus on the words. We handle everything else.
       </p>
       <div class="tech-pills">
-        <span class="pill">End-to-end JWT authentication</span>
-        <span class="pill">GDPR compliant</span>
-        <span class="pill">AWS cloud infrastructure</span>
-        <span class="pill">Stripe-powered payments</span>
-        <span class="pill">Daily encrypted backups</span>
-        <span class="pill">OpenAI integration</span>
-        <span class="pill">Resilient microservices</span>
-        <span class="pill">99.9% uptime target</span>
+        <span class="pill">Your lyrics are private and encrypted</span>
+        <span class="pill">Your data belongs to you</span>
+        <span class="pill">Always available, wherever you are</span>
+        <span class="pill">Pay securely — we never store your card</span>
+        <span class="pill">Backed up every day, automatically</span>
+        <span class="pill">Smart suggestions powered by AI</span>
+        <span class="pill">Built to grow with you</span>
+        <span class="pill">Reliable enough to write on deadline</span>
       </div>
     </div>
   </section>
