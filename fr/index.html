@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilena — Un compagnon d'écriture pour les paroliers sérieux</title>
+  <link rel="icon" href="../assets/ilena.ico" type="image/x-icon">
+  <link rel="canonical" href="https://www.ilena.app/fr/">
+  <link rel="alternate" hreflang="en" href="https://www.ilena.app/en/">
+  <link rel="alternate" hreflang="fr" href="https://www.ilena.app/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.ilena.app/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.ilena.app/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D0D12;
+      --surface: #16161F;
+      --border: #2A2A3A;
+      --accent: #7C5CFC;
+      --accent-hover: #5B3ED6;
+      --accent-light: #a688ff;
+      --text: #E8E8F0;
+      --muted: #8888A0;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(13, 13, 18, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--text); text-decoration: none; }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+    }
+
+    .lang-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.25rem 0.45rem;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+
+    .lang-link:hover { color: var(--text); text-decoration: none; }
+    .lang-link.active { color: var(--text); }
+
+    .lang-sep {
+      color: var(--border);
+      font-size: 0.75rem;
+      user-select: none;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--accent-hover); text-decoration: none; }
+
+    .hero {
+      text-align: center;
+      padding: 7rem 2rem 5.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.1);
+      border: 1px solid rgba(124, 92, 252, 0.3);
+      color: var(--accent-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); text-decoration: none; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 0.75rem 2rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); text-decoration: none; }
+
+    .problem-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--surface);
+    }
+
+    .problem-headline {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .problem-headline em {
+      font-style: normal;
+      color: var(--accent-light);
+    }
+
+    .pain-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pain {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      text-align: left;
+    }
+
+    .pain strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.125rem;
+      max-width: 520px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover { border-color: var(--accent); }
+
+    .feature-icon {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 1.25rem;
+      color: var(--accent-light);
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .how-section { background: var(--surface); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .step-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgba(124, 92, 252, 0.2);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      letter-spacing: -1px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .cred-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cred-headline {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .cred-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .cred-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+    }
+
+    .cred-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+
+    .cred-icon {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 1rem;
+      color: var(--accent-light);
+    }
+
+    .cred-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .cred-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .beta-cta {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.1);
+      border: 1px solid rgba(124, 92, 252, 0.35);
+      color: var(--accent-light);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .beta-cta:hover { background: rgba(124, 92, 252, 0.18); text-decoration: none; }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .plan-card.featured {
+      border-color: var(--accent);
+      background: rgba(124, 92, 252, 0.06);
+      position: relative;
+    }
+
+    .plan-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-price span {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    .plan-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      min-height: 2.5rem;
+      line-height: 1.55;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .plan-features li {
+      font-size: 0.875rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: var(--accent-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .plan-features li.soon { color: var(--muted); }
+
+    .plan-features li.soon::before {
+      content: "◦";
+      color: var(--border);
+    }
+
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 0.65rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .plan-cta.primary { background: var(--accent); color: #fff; }
+    .plan-cta.primary:hover { background: var(--accent-hover); text-decoration: none; }
+
+    .plan-cta.secondary { border: 1px solid var(--border); color: var(--text); }
+    .plan-cta.secondary:hover { border-color: var(--accent); text-decoration: none; }
+
+    .billing-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .toggle-track {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .toggle-track.yearly { background: var(--accent); }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle-track.yearly .toggle-thumb { transform: translateX(20px); }
+
+    .toggle-label.active { color: var(--text); }
+
+    .save-badge {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.15);
+      border: 1px solid rgba(124, 92, 252, 0.3);
+      color: var(--accent-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .tech-section { background: var(--surface); }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    footer strong { color: var(--text); }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><img src="../assets/ilena.png" alt="Ilena"></div>
+    <ul>
+      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#how-it-works">Comment ça marche</a></li>
+      <li><a href="#pricing">Tarifs</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <a href="../en/" class="lang-link">EN</a>
+      <span class="lang-sep">·</span>
+      <a href="../fr/" class="lang-link active">FR</a>
+      <span class="lang-sep">·</span>
+      <a href="../es/" class="lang-link">ES</a>
+    </div>
+    <a href="#pricing" class="nav-cta">Commencer</a>
+  </nav>
+
+  <div class="hero">
+    <div class="badge">Bêta fermée — en cours de développement</div>
+    <h1>Vos paroles.<br><em>Élevées.</em></h1>
+    <p>
+      Ilena est un compagnon d'écriture pour les paroliers sérieux. Il analyse votre travail,
+      propose des alternatives et affine votre art — sans écrire un seul mot à votre place.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Commencer gratuitement</a>
+      <a href="#features" class="btn-secondary">Voir comment ça marche</a>
+    </div>
+  </div>
+
+  <section class="problem-section">
+    <h2 class="problem-headline">
+      L'écriture de chansons est personnelle.<br><em>Les outils le sont rarement.</em>
+    </h2>
+    <div class="pain-points">
+      <div class="pain">
+        <strong>Bloqué sur une rime</strong>
+        Vingt minutes sur le dernier vers. Rien ne convient. Le sentiment de départ est toujours là — les mots, non.
+      </div>
+      <div class="pain">
+        <strong>Quelque chose sonne faux</strong>
+        Le rythme se brise à la voix, mais identifier exactement où prend plus de temps que la correction elle-même.
+      </div>
+      <div class="pain">
+        <strong>Réviser à l'infini</strong>
+        Version dix-huit. Le sentiment original a presque disparu sous tous les changements.
+      </div>
+      <div class="pain">
+        <strong>Trop d'outils séparés</strong>
+        Un dictionnaire de rimes, un thésaurus, une appli de notes, un mémo vocal — juste pour finir un couplet.
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-inner">
+      <div class="section-label">Fonctionnalités</div>
+      <h2 class="section-title">Conçu pour tout le processus d'écriture</h2>
+      <p class="section-sub">
+        Du premier brouillon au dernier vers, Ilena vous donne les outils pour écrire avec plus de précision — avec votre propre voix.
+      </p>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          <h3>Éditeur de paroles</h3>
+          <p>Écrivez et organisez toutes vos chansons en un seul endroit. Votre travail est stocké en sécurité et accessible depuis n'importe quel appareil.</p>
+        </div>
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <h3>Dictionnaire de définitions</h3>
+          <p>Recherchez n'importe quel mot sans quitter votre chanson. Comprenez les nuances et choisissez le mot qui exprime exactement ce que vous voulez dire.</p>
+        </div>
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+          <h3>Suggestions de rimes</h3>
+          <p>Trouvez la rime qu'il faut — parfaite, approchée ou consonante — sans compromettre ce que vous voulez exprimer.</p>
+        </div>
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <h3>Analyse du rythme et des syllabes</h3>
+          <p>Visualisez le nombre de syllabes et les schémas accentuels ligne par ligne. Gardez votre métrique cohérente sans perdre ce qui rend un vers unique.</p>
+        </div>
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 1 21 5 17 9"/>
+            <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+            <polyline points="7 23 3 19 7 15"/>
+            <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          </svg>
+          <h3>Synonymes et antonymes</h3>
+          <p>Explorez des alternatives pour n'importe quel mot — affinez les images, évitez les répétitions ou trouvez un meilleur accord pour le vers.</p>
+        </div>
+
+        <div class="feature-card">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <h3>Analyse stylistique</h3>
+          <p>Des retours réfléchis sur le ton, les images et la structure — des observations qui renforcent votre art sans supplanter votre voix.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="how-it-works" class="how-section">
+    <div class="section-inner">
+      <div class="section-label">Comment ça marche</div>
+      <h2 class="section-title">Écrivez. Analysez. Affinez.</h2>
+      <p class="section-sub">Ilena s'intègre dans votre processus créatif — pas l'inverse.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Rédigez votre brouillon</h3>
+          <p>Ouvrez une chanson et commencez à écrire. Pas de modèles, pas de contraintes — une page blanche pour vos idées.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Obtenez un retour instantané</h3>
+          <p>Ilena analyse vos paroles au fil de l'écriture, signalant les problèmes de rythme et suggérant rimes et définitions en contexte.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Affinez à votre rythme</h3>
+          <p>Parcourez les alternatives et suggestions. Acceptez ce qui sert la chanson, ignorez le reste. Vous restez l'auteur.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Sauvegardez et revenez</h3>
+          <p>Vos chansons sont stockées dans le cloud. Reprenez où vous vous étiez arrêté depuis n'importe quel appareil, à tout moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="cred-section">
+    <div class="section-inner">
+      <div class="section-label">Pourquoi Ilena</div>
+      <h2 class="cred-headline">Conçu par un parolier. Façonné par des paroliers.</h2>
+      <p class="cred-sub">Chaque fonctionnalité existe parce que quelqu'un en avait besoin lors d'une vraie session d'écriture.</p>
+      <div class="cred-cards">
+        <div class="cred-card">
+          <svg class="cred-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <h3>Plus de 30 ans d'ingénierie logicielle</h3>
+          <p>Architecture, sécurité et fiabilité de niveau professionnel — pas un projet annexe maintenu à la va-vite.</p>
+        </div>
+        <div class="cred-card">
+          <svg class="cred-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+          <h3>Conçu par un parolier, pour les paroliers</h3>
+          <p>Chaque fonctionnalité vient d'une vraie frustration lors d'une vraie session d'écriture. Ces outils existent parce que le fondateur en avait besoin.</p>
+        </div>
+        <div class="cred-card">
+          <svg class="cred-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <h3>Façonné par des paroliers actifs</h3>
+          <p>Des paroliers actifs sont impliqués depuis le premier jour — testant, critiquant et orientant ce qui est construit.</p>
+        </div>
+      </div>
+      <a href="#" class="beta-cta">Bêta fermée bientôt ouverte — demandez un accès anticipé</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="pricing">
+    <div class="section-inner">
+      <div class="section-label">Tarifs</div>
+      <h2 class="section-title">Tarification simple et honnête</h2>
+      <p class="section-sub">Commencez gratuitement. Passez au niveau supérieur quand vous en avez besoin.</p>
+
+      <div class="billing-toggle">
+        <span class="toggle-label active" id="labelMonthly">Mensuel</span>
+        <div class="toggle-track" id="toggleTrack">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label" id="labelYearly">Annuel</span>
+        <span class="save-badge">Économisez 17 %</span>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="plan-card">
+          <div class="plan-name">Gratuit</div>
+          <div class="plan-price">$0</div>
+          <div class="plan-desc">Pour les auteurs qui veulent essayer Ilena avant de s'engager.</div>
+          <ul class="plan-features">
+            <li>Jusqu'à 2 chansons</li>
+            <li>Dictionnaire de rimes</li>
+            <li>Dictionnaire de définitions</li>
+            <li>Suggestions de rimes</li>
+            <li>Compteur de syllabes</li>
+          </ul>
+          <a href="#" class="plan-cta secondary">Commencer</a>
+        </div>
+
+        <div class="plan-card featured">
+          <div class="plan-tag">Le plus populaire</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price" id="pricePro">$5 <span>/ mois</span></div>
+          <div class="plan-desc">Tout ce dont vous avez besoin en tant que parolier solo actif.</div>
+          <ul class="plan-features">
+            <li>Chansons illimitées</li>
+            <li>Toutes les fonctionnalités Gratuit</li>
+            <li>Synonymes et antonymes</li>
+            <li>Analyse stylistique</li>
+            <li>Insights par IA</li>
+            <li>Support prioritaire</li>
+          </ul>
+          <a href="#" class="plan-cta primary">Démarrer Pro</a>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-name">Studio</div>
+          <div class="plan-price" id="priceStudio">$45 <span>/ mois</span></div>
+          <div class="plan-desc">Pour les groupes et équipes de co-écriture. Bientôt disponible.</div>
+          <ul class="plan-features">
+            <li>Tout ce qui est dans Pro</li>
+            <li class="soon">Jusqu'à 15 collaborateurs</li>
+            <li class="soon">Bibliothèque partagée</li>
+            <li class="soon">Analytiques d'équipe</li>
+            <li class="soon">Support dédié</li>
+          </ul>
+          <a href="#" class="plan-cta secondary">Rejoindre la liste d'attente</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="tech-section">
+    <div class="section-inner">
+      <div class="section-label">Construit pour la fiabilité</div>
+      <h2 class="section-title">Vos chansons sont en sécurité. Point final.</h2>
+      <p class="section-sub">Vous vous concentrez sur les mots. Nous gérons le reste.</p>
+      <div class="tech-pills">
+        <span class="pill">Les paroles sont privées et chiffrées</span>
+        <span class="pill">Vos données vous appartiennent</span>
+        <span class="pill">Disponible où que vous soyez</span>
+        <span class="pill">Paiements sécurisés — coordonnées bancaires jamais stockées</span>
+        <span class="pill">Sauvegardes automatiques quotidiennes</span>
+        <span class="pill">Assisté par l'IA, jamais rédigé par l'IA</span>
+        <span class="pill">Conçu pour évoluer avec vous</span>
+        <span class="pill">Fiable même sous pression</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var track = document.getElementById('toggleTrack');
+    var pricePro = document.getElementById('pricePro');
+    var priceStudio = document.getElementById('priceStudio');
+    var labelMonthly = document.getElementById('labelMonthly');
+    var labelYearly = document.getElementById('labelYearly');
+    var yearly = false;
+
+    track.addEventListener('click', function() {
+      yearly = !yearly;
+      track.classList.toggle('yearly', yearly);
+      labelMonthly.classList.toggle('active', !yearly);
+      labelYearly.classList.toggle('active', yearly);
+      pricePro.innerHTML = yearly ? '$50 <span>/ an</span>' : '$5 <span>/ mois</span>';
+      priceStudio.innerHTML = yearly ? '$450 <span>/ an</span>' : '$45 <span>/ mois</span>';
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2026 <strong>Ilena</strong>. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
